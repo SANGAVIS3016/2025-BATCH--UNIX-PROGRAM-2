@@ -1,0 +1,25 @@
+name: Unix Practical - Hostname
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+
+  autograding:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Student Work
+        uses: actions/checkout@v4
+
+      - name: Give permission to test file
+        run: chmod +x tests/test_hostname.sh
+
+      - name: Run Autograder
+        run: ./tests/test_hostname.sh
